@@ -1,0 +1,23 @@
+package com.qualitystream.tutorial;
+
+import org.junit.BeforeClass;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class choucairtestingTest {
+	private WebDriver driver;
+	
+	@BeforeClass
+	public void setUp() {
+		System.setProperty("webdriver.chrome.drive", "./src/test/resources/chromedriver.exe");
+		driver = new ChromeDriver();
+		driver.manage().window().maximize();
+		driver.get("https://www.choucairtesting.com/contactenos/");
+	}
+	
+	@Test
+	public void testChoucairTestingPage() {
+		
+	}
+
+}

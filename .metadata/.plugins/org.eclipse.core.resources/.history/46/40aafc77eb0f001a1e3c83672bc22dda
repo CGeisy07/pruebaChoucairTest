@@ -1,0 +1,59 @@
+package com.qualitystream.tutorial;
+
+
+import java.util.concurrent.TimeUnit;
+
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class choucairtestingTest {
+	private WebDriver driver;
+	
+	@Before
+	public void setUp() {
+		System.setProperty("webdriver.chrome.drive", "./src/test/resources/chromedriver.exe");
+		driver = new ChromeDriver();
+		driver.manage().window().maximize();
+		driver.get("https://www.choucairtesting.com/contactenos/");
+	}
+	
+	@Test
+	public void testChoucairTestingPage() {
+		
+		WebElement textbox = driver.findElement(By.name("nombre"));
+		WebElement text1box = driver.findElement(By.name("apellidos"));
+		WebElement text2box = driver.findElement(By.name("empresa"));
+		WebElement text3box = driver.findElement(By.name("cuidad"));
+		WebElement text4box = driver.findElement(By.name("telefono"));
+		WebElement text5box = driver.findElement(By.name("correo"));
+		WebElement text6box = driver.findElement(By.name("mensaje"));
+		
+		WebElement radio = driver.findElement(By.name("pqrs"));
+		
+		textbox.clear();
+		
+		textbox.sendKeys("Geisy");
+		text1box.sendKeys("Coronado");
+		text2box.sendKeys("pecpanama");
+		text3box.sendKeys("panamá");
+		text4box.sendKeys("6628524");
+		text5box.sendKeys("Geisy@gmail.com");
+		text6box.sendKeys("pruebas de automatizacion");
+		radio.sendKeys("Queja");
+		
+		textbox.submit();	
+		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		
+		
+	}
+	@After
+	public void tearDown() {
+		driver.quit();
+	}
+
+}
